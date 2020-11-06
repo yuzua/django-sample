@@ -7,6 +7,8 @@ services:
         - 8000:8000
     volumes:
     - '.:/django-sample'
+    - 'gunicorn.socket:/etc/systemd/systyem/'
+    
     tty: True
     stdin_open:  True
     depends_on:
