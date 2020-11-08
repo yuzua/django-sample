@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '(55#b6c-tw&_m21)fbe-i&dar1%)k-0)y26x@ql^q3eu5$931u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -133,9 +133,6 @@ USE_TZ = True
 import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
-
-
-DEBUG = False
 
 try:
     from config.local_settings import *
