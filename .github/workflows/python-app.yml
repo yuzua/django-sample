@@ -31,4 +31,5 @@ jobs:
       run: |
         docker-compose up -d
         docker-compose exec -T web bash
-        docker-compose exec -i web pipenv install --system
+        ls
+
