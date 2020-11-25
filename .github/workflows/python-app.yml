@@ -9,10 +9,7 @@ on:
   pull_request:
     branches: [ master ]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    
+jobs:    
       # コンテナジョブのラベル
   container-job:
     # コンテナはLinuxベースのオペレーティングシステム内で実行しなければならない
