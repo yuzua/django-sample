@@ -8,29 +8,19 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
-jobs:    
-      # コンテナジョブのラベル
-  container-job:
-    # コンテナはLinuxベースのオペレーティングシステム内で実行しなければならない
+    
+jobs:
+  build:
+    # Job name is Greeting
+    name: verify
+    # This job runs on Linux
     runs-on: ubuntu-latest
-    # `container-job`が実行されるDocker Hubのイメージ
-    container: python:3.8
-    # `container-job`と実行されるサービスコンテナ
     services:
-      # サービスコンテナへのアクセスに使われるラベル
-      database:
-        # Docker Hubのイメージ
-        image: postgres:11
-        # postgresのパスワードを提供
-        env:
-          HOST_AUTH_METHOD: trust
-        # postgresが起動するまで待つヘルスチェックの設定
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+      postgres:
+        image: postgres:12
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 
       
     steps:
     - uses: actions/checkout@v2 
