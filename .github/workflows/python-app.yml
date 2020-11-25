@@ -28,7 +28,7 @@ jobs:
     - name: docker run
       run: |
         docker-compose up -d
-        docker-compose exec app bash
+        docker-compose exec web bash
         
         
     - name: Test
