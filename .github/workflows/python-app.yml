@@ -33,6 +33,7 @@ jobs:
         
         
     - name: Test
+      shell: bash
       run: |
         pipenv install -system
         python manage.py migrate
