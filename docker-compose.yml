@@ -16,7 +16,7 @@ services:
     links: 
         - db
     
-  db:
+  postgres:
     image: postgres:11
     environment:
       - 'POSTGRES_HOST_AUTH_METHOD=trust'
