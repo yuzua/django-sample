@@ -30,7 +30,7 @@ jobs:
       shell: bash
       run: |
         docker-compose up -d
-        docker-compose exec web bash
+        docker-compose exec -T web bash
         docker exec -i web pipenv install --system
         docker exec -i web python manage.py migrate
         docker exec -i web python manage.py collectstatic
