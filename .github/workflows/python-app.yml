@@ -37,6 +37,6 @@ jobs:
         pipenv install -system
         python manage.py migrate
         python manage.py collectstatic
-        gunicorn --bind 0.0.0.0:8000 TodoProject.wsgi
+        gunicorn --bind 0.0.0.0:8000 TodoProject.wsgi:application
         python manage.py test
 
