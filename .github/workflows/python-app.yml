@@ -11,7 +11,12 @@ on:
 
 jobs:
   build:
-
+    services:
+      options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     runs-on: ubuntu-latest
 
     steps:
@@ -25,11 +30,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install pipenv
         
+    - name: dokcer run
+      shell: bash
+      run: |
+        docker-compose up -d
         
-    - name: docker run & Test
+    - name:  Test
       shell: bash
       run: |
         docker-compose up -d
         docker-compose exec -T web bash
         pipenv install --system
-        docker ps -a
+        python manage.py migrate
+        gunicorn --bind 0.0.0.0:8000 TodoProject.wsgi:application
+        python manage.py test
