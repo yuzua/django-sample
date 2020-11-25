@@ -13,14 +13,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
+      # コンテナジョブのラベル
+  container-job:
+    # コンテナはLinuxベースのオペレーティングシステム内で実行しなければならない
+    runs-on: ubuntu-latest
+    # `container-job`が実行されるDocker Hubのイメージ
+    container: node:10.18-jessie
+
+    # `container-job`と実行されるサービスコンテナ
     services:
+      # サービスコンテナへのアクセスに使われるラベル
       database:
-        image: postgres:11.2
-        ports: 
-        - 5432:5432
+        # Docker Hubのイメージ
+        image: postgres:11
+        # postgresのパスワードを提供
         env:
           HOST_AUTH_METHOD: trust
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        # postgresが起動するまで待つヘルスチェックの設定
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
       
     steps:
     - uses: actions/checkout@v2 
