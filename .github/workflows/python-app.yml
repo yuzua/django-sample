@@ -26,15 +26,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install pipenv
         
-    - name: docker run
+        
+    - name: docker run & Test
       shell: bash
       run: |
         docker-compose up -d
-        
-        
-    - name: Test
-      shell: bash
-      run: |
         docker-compose exec -T web bash
         pipenv install --system
         python manage.py migrate
