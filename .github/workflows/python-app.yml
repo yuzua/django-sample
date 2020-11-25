@@ -28,14 +28,14 @@ jobs:
     - name: docker run
       shell: bash
       run: |
-        docker-compose up --build -d
-        docker-compose exec web bash
+        docker-compose up -d
+        docker-compose exec -T web bash
         
         
     - name: Test
       shell: bash
       run: |
-        pipenv install -system
+        pipenv install --system
         python manage.py migrate
         python manage.py collectstatic
         gunicorn --bind 0.0.0.0:8000 TodoProject.wsgi:application
