@@ -30,9 +30,9 @@ jobs:
       shell: bash
       run: |
         docker-compose up -d
-        docker-compose exec -i web pipenv install --system
-        docker-compose exec -i web python manage.py migrate
-        docker-compose exec -i web python manage.py collectstatic
-        docker-compose exec -i web gunicorn --bind 0.0.0.0:8000 TodoProject.wsgi:application
-        docker-compose exec -i web python manage.py test
+        docker exec -i web pipenv install --system
+        docker exec -i web python manage.py migrate
+        docker exec -i web python manage.py collectstatic
+        docker exec -i web gunicorn --bind 0.0.0.0:8000 TodoProject.wsgi:application
+        docker exec -i web python manage.py test
 
