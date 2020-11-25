@@ -15,8 +15,7 @@ jobs:
     # コンテナはLinuxベースのオペレーティングシステム内で実行しなければならない
     runs-on: ubuntu-latest
     # `container-job`が実行されるDocker Hubのイメージ
-    container: node:10.18-jessie
-
+    container: python:3.8
     # `container-job`と実行されるサービスコンテナ
     services:
       # サービスコンテナへのアクセスに使われるラベル
