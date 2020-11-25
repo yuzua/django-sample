@@ -32,4 +32,4 @@ jobs:
         docker-compose up -d
         docker-compose exec -T web bash
         pipenv install --system
-        python manage.py migrate
+        docker ps -a
