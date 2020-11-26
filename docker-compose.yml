@@ -11,8 +11,6 @@ services:
       - 8000
     tty: True
     stdin_open:  True
-    links: 
-      - postgres
 
   nginx:
         build: ./nginx
