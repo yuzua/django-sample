@@ -39,6 +39,7 @@ jobs:
       shell: bash
       run: |
         docker-compose up -d
+        docker ps -a
     - name: Run Tests
       shell: bash
       run: |
