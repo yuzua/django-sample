@@ -44,4 +44,7 @@ jobs:
       run: |
         docker-compose exec -T web bash
         pipenv install --system
-        pythom manage.py migrate
+        pwd
+        ls
+        python --version
+        python -m django version
