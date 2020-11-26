@@ -39,12 +39,9 @@ jobs:
       shell: bash
       run: |
         docker-compose up -d
+        docker ps -a
     - name: Run Tests
       shell: bash
       run: |
         docker-compose exec -T web bash
         pipenv install --system
-        pwd
-        ls
-        python --version
-        python -m django version
